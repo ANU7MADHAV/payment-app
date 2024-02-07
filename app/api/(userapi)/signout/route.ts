@@ -1,8 +1,33 @@
+import { getUser } from "@/utilities/getUser";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = () => {
+export const GET = async (req: NextRequest) => {
   cookies().delete("token");
+
+  const user = getUser(req);
+  if (!user) {
+    console.log("No user");
+    return NextResponse.json({ message: "No user details" });
+  }
+
+  const userId = (user as { userId: string }).userId;
+
+  const offlineUser = await prisma?.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      online: false,
+    },
+  });
+
+  if (!offlineUser) {
+    return NextResponse.json({
+      message: "failed updated user offline",
+      status: 400,
+    });
+  }
 
   return NextResponse.json({
     message: "Cookies deleted succesfully",

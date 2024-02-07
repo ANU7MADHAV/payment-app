@@ -8,9 +8,7 @@ const Balance = () => {
   useEffect(() => {
     const getBalance = async () => {
       try {
-        const res = await axios.get(
-          "/api/account/balance",
-        );
+        const res = await axios.get("/api/account/balance");
         const data = res.data;
         const { balance } = data;
         setBalance(balance);
@@ -20,7 +18,7 @@ const Balance = () => {
     };
     getBalance();
   }, []);
-  return <h1 className="text-xl font-bold">User balanace $ {balance}</h1>;
+  return <h1 className="text-xl font-bold">User balance $ {balance}</h1>;
 };
 
 export default Balance;

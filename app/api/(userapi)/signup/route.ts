@@ -58,6 +58,15 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ message: "Balance is not added", status: 400 });
   }
 
+  const onlineUser = await prisma.user.update({
+    where: {
+      id: createUser.id,
+    },
+    data: {
+      online: true,
+    },
+  });
+
   const token = generateAccessToken(userId);
 
   const response = NextResponse.json({

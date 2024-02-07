@@ -9,6 +9,7 @@ export const POST = async (req: NextRequest) => {
   try {
     const users = await prisma.user.findMany({
       where: {
+        online: false,
         OR: [
           { firstName: { startsWith: data, mode: "insensitive" } },
           { lastName: { contains: data, mode: "insensitive" } },

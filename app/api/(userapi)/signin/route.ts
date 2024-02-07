@@ -22,6 +22,21 @@ export const POST = async (req: NextRequest) => {
   const userId = checkUsername.id;
   const token = generateAccessToken(userId);
 
+  const onlineUser = await prisma.user.update({
+    where: {
+      id: checkUsername.id,
+    },
+    data: {
+      online: true,
+    },
+  });
+  if (!onlineUser) {
+    return NextResponse.json({
+      message: "Online user failed to update ",
+      status: 400,
+    });
+  }
+
   const response = NextResponse.json({
     message: "Succesfully logged",
     success: true,
