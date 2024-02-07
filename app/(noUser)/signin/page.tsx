@@ -21,12 +21,8 @@ const SignIn = () => {
   const onSubmit: SubmitHandler<ValidationSchema> = (submitData) => {
     const fetchData = async () => {
       try {
-        const res = await axios.post(
-          "http://localhost:3000/api/signin",
-          submitData,
-        );
+        const res = await axios.post("/api/signin", submitData);
         const data = res.data;
-
         router.push("/dashboard");
       } catch (error) {
         console.log(error);

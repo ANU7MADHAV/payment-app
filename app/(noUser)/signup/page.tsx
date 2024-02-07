@@ -22,10 +22,7 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<ValidationSchema> = (submitData) => {
     const fetchData = async () => {
       try {
-        const res = await axios.post(
-          "http://localhost:3000/api/signup",
-          submitData,
-        );
+        const res = await axios.post("/api/signup", submitData);
         const data = res.data;
         router.push("/dashboard");
       } catch (error) {
