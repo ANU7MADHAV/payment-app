@@ -3,6 +3,8 @@ import Image from "next/image";
 import paytm from "@/public/paytm.png";
 import paytmIcon from "@/public/paytm-icon.jpg";
 import RechargeSection from "@/components/Home/Reacharge/RechargeSection";
+import BookiSection from "@/components/Home/Booking/BookiSection";
+import Instruments from "@/components/Home/payment-instruments/Instruments";
 
 const Home = () => {
   return (
@@ -32,7 +34,15 @@ const Home = () => {
         <div>
           <RechargeSection />
         </div>
+        <div>
+          <BookiSection />
+        </div>
+        <div>
+          <Instruments />
+        </div>
       </div>
+      <div className=" mt-[30px] h-4 bg-blue-400"></div>
+      <div className="h-4 bg-blue-600"></div>
     </main>
   );
 };

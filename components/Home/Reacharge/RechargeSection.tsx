@@ -9,8 +9,8 @@ import allpaymentIcon from "@/public/allpayment.png";
 
 const RechargeSection = () => {
   return (
-    <main className=" space-y-5 bg-[#00baf2] p-6">
-      <h1 className="pl-8 text-3xl font-bold text-white">
+    <main className="mt-[80px] space-y-5 bg-[#00baf2] p-6">
+      <h1 className="pl-6 text-4xl font-bold text-white">
         Recharge & Pay Bills on Paytm.
       </h1>
       <section className="flex items-center justify-around space-x-4">
@@ -27,7 +27,7 @@ const RechargeSection = () => {
             imageUrl={electriIcon}
             firstHeading="Pay"
             secondHeading="Electricity"
-            ThirdHeading="Bill"
+            ThirdHeading="Bills"
           />
         </div>
         <div>
