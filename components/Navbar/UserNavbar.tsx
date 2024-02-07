@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const Navbar = () => {
   const router = useRouter();
   return (
-    <div className="flex items-center justify-between p-4 shadow-md">
+    <div className="flex items-center justify-between p-4 shadow-md dark:shadow-blue-400">
       <div className="flex items-center justify-around space-x-14 px-4 ">
         <Link href="/">
           <h1 className="text-4xl font-bold text-blue-600">Payment App</h1>
