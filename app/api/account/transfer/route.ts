@@ -1,5 +1,6 @@
 import { getUser } from "@/utilities/getUser";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/utilities/db";
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
@@ -31,18 +32,6 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ message: "insufficient amount", amount });
   }
 
-  const fromTransfer = await prisma?.account.update({
-    where: {
-      userId: account.userId,
-    },
-    data: {
-      balance: fromBalance,
-    },
-  });
-  if (!fromTransfer) {
-    return NextResponse.json({ message: "From account transcation is failed" });
-  }
-
   const toAccount = await prisma?.account.findUnique({
     where: {
       userId: to,
@@ -54,16 +43,54 @@ export const POST = async (req: NextRequest) => {
   const toAccountBalance = Number(toAccount.balance);
   const toBalance = toAccountBalance + numberAmount;
 
-  const toTransfer = await prisma?.account.update({
-    where: {
-      userId: toAccount.userId,
-    },
-    data: {
-      balance: toBalance,
-    },
-  });
-  if (!toTransfer) {
-    return NextResponse.json({ message: "Transcation is failed" });
+  const transfer = await prisma?.$transaction([
+    prisma.account.update({
+      where: {
+        userId: account.userId,
+      },
+      data: {
+        balance: fromBalance,
+      },
+    }),
+    prisma.account.update({
+      where: {
+        userId: toAccount.userId,
+      },
+      data: {
+        balance: toBalance,
+      },
+    }),
+  ]);
+
+  if (!transfer) {
+    return NextResponse.json({ message: "Transfer is failed", status: 400 });
   }
+
+  // const fromTransfer = await prisma?.account.update({
+  //   where: {
+  //     userId: account.userId,
+  //   },
+  //   data: {
+  //     balance: fromBalance,
+  //   },
+  // });
+
+  // if (!fromTransfer) {
+  //   return NextResponse.json({ message: "From account transcation is failed" });
+  // }
+
+  // const toTransfer = await prisma?.account.update({
+  //   where: {
+  //     userId: toAccount.userId,
+  //   },
+  //   data: {
+  //     balance: toBalance,
+  //   },
+  // });
+
+  // if (!toTransfer) {
+  //   return NextResponse.json({ message: "Transcation is failed" });
+  // }
+
   return NextResponse.json({ message: "Transcation is updated Succesfully" });
 };

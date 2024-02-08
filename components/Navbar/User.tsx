@@ -28,8 +28,8 @@ const User = () => {
   }, []);
   const nameFirstLetter = user ? user.firstName.charAt(0) : "U";
   return (
-    <div className="mx-2 flex items-center justify-around">
-      <AvatarIcon>{nameFirstLetter}</AvatarIcon>
+    <div className="flex items-center justify-around">
+      <AvatarIcon >{nameFirstLetter}</AvatarIcon>
       {user ? user.firstName : "user"}
     </div>
   );
