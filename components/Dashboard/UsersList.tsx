@@ -3,6 +3,7 @@
 import { usersListAtoms } from "@/src/atoms/userListAtom";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
+import AvatarIcon from "../Avatar";
 
 const UsersList = () => {
   const [users, setUsers] = useRecoilState(usersListAtoms);
@@ -13,7 +14,11 @@ const UsersList = () => {
         {users.map((user, index) => (
           <li key={user.id}>
             <div className="flex justify-between space-y-3">
-              <span>{user.firstName}</span>
+              <section className="flex items-center">
+                <AvatarIcon>{user ? user.firstName.charAt(0) : "U"}</AvatarIcon>
+                <span>{user.firstName}</span>
+              </section>
+
               <Link href={`/dashboard/sendmoney?user=${user.id}`}>
                 <button className="rounded-md bg-black px-2 py-1 text-white dark:bg-white dark:text-black">
                   Send Money

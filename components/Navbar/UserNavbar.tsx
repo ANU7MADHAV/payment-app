@@ -29,7 +29,7 @@ const Navbar = () => {
             console.log(data);
             router.refresh();
           }}
-          className="cursor-pointer"
+          className="cursor-pointer pt-1"
         >
           Sign out
         </div>

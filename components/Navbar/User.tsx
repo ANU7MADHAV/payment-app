@@ -3,6 +3,7 @@
 import { user } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import AvatarIcon from "../Avatar";
 
 type CurrenUser = {
   firstName: string;
@@ -25,8 +26,13 @@ const User = () => {
     };
     getUser();
   }, []);
-
-  return <div>{user ? user.firstName : "user"}</div>;
+  const nameFirstLetter = user ? user.firstName.charAt(0) : "U";
+  return (
+    <div className="mx-2 flex items-center justify-around">
+      <AvatarIcon>{nameFirstLetter}</AvatarIcon>
+      {user ? user.firstName : "user"}
+    </div>
+  );
 };
 
 export default User;
