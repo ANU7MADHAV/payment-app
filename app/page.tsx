@@ -41,7 +41,7 @@ const Home = () => {
           <Instruments />
         </div>
       </div>
-      <div className=" mt-[30px] h-4 bg-blue-400"></div>
+      <div className=" mt-[40px] h-4 bg-blue-400"></div>
       <div className="h-4 bg-blue-600"></div>
     </main>
   );

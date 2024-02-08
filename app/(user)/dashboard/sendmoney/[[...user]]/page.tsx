@@ -1,14 +1,30 @@
 "use client";
 
 import { AlertDialogDemo } from "@/components/Sendmoney/Alert";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import axios from "axios";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+
+type ToUser = {
+  message: string;
+  firstName: string;
+  username: string;
+};
 
 const SendMoney = () => {
   const searchParams = useSearchParams();
   const toAccount = searchParams.get("user");
+  const [toUser, setToUser] = useState<ToUser>();
   const [sendAmount, setSendAmount] = useState("");
-  const router = useRouter();
+
+  useEffect(() => {
+    const getToUser = async () => {
+      const res = await axios.post("/api/toUser", { id: toAccount });
+      const data = await res.data;
+      setToUser(data);
+    };
+    getToUser();
+  }, []);
 
   return (
     <div className="flex h-screen items-center justify-center">
@@ -16,7 +32,14 @@ const SendMoney = () => {
         <h1 className="text-center text-2xl font-bold">Send Money</h1>
         <div>
           <section>
-            <h1 className="py-4 text-xl font-bold">Friend's name</h1>
+            <div className="py-4">
+              <h1 className="text-xl font-bold">
+                {toUser
+                  ? toUser.firstName.toLocaleUpperCase()
+                  : "Friend's Name"}
+              </h1>
+              <p>{toUser ? toUser.username : "Friend's Username"}</p>
+            </div>
             <p>Amount (in Rs)</p>
           </section>
           <form className="flex flex-col">
