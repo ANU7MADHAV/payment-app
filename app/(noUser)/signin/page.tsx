@@ -23,7 +23,7 @@ const SignIn = () => {
       try {
         const res = await axios.post("/api/signin", submitData);
         const data = res.data;
-        router.push("/dashboard");
+        router.push("/");
       } catch (error) {
         console.log(error);
       }

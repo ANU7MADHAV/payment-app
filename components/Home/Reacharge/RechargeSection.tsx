@@ -17,9 +17,10 @@ const RechargeSection = () => {
         <div>
           <ReachargeComponents
             imageUrl={mobilIcon}
-            firstHeading="Reacharge"
+            firstHeading="Recharge"
             secondHeading="Prepaid"
             ThirdHeading="Mobile"
+            href="/mobile-recharge"
           />
         </div>
         <div>
@@ -28,6 +29,7 @@ const RechargeSection = () => {
             firstHeading="Pay"
             secondHeading="Electricity"
             ThirdHeading="Bills"
+            href="/pay-electricity"
           />
         </div>
         <div>
@@ -36,6 +38,7 @@ const RechargeSection = () => {
             firstHeading="Reacharge"
             secondHeading="DTH"
             ThirdHeading="Connection"
+            href="/dth-recharge"
           />
         </div>
         <div>
@@ -44,6 +47,7 @@ const RechargeSection = () => {
             firstHeading="Book"
             secondHeading="Gas"
             ThirdHeading="Cylinder"
+            href="/book-recharge"
           />
         </div>
         <div>
@@ -52,6 +56,7 @@ const RechargeSection = () => {
             firstHeading="Pay"
             secondHeading="Broadband&"
             ThirdHeading="Landline"
+            href="/pay-broadband"
           />
         </div>
         <div>
@@ -60,6 +65,7 @@ const RechargeSection = () => {
             firstHeading="Pay"
             secondHeading="Education"
             ThirdHeading="Fee"
+            href="/pay-education"
           />
         </div>
         <div>
@@ -68,6 +74,7 @@ const RechargeSection = () => {
             firstHeading="All"
             secondHeading="Payment"
             ThirdHeading="Services"
+            href="/all-payments"
           />
         </div>
       </section>

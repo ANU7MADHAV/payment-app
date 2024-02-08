@@ -1,12 +1,11 @@
 "use client";
-import Heading from "@/components/Heading";
-import axios from "axios";
-import { z } from "zod";
-import Link from "next/link";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { validationSchema } from "@/utilities/clientValidationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
 type ValidationSchema = z.infer<typeof validationSchema>;
 
@@ -24,7 +23,7 @@ const SignUp = () => {
       try {
         const res = await axios.post("/api/signup", submitData);
         const data = res.data;
-        router.push("/dashboard");
+        router.push("/");
       } catch (error) {
         console.log(error);
       }

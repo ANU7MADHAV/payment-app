@@ -23,3 +23,9 @@ model Account {
   user    User   @relation(fields: [userId], references: [id])
   userId  String @unique @map("_userId") @db.ObjectId
 }
+
+model Mobile {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  operator String @unique
+  balance  Int
+}

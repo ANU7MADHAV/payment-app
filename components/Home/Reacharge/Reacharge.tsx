@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
   firstHeading: string;
   secondHeading: string;
   ThirdHeading: string;
+  href: string;
 };
 
 const ReachargeComponents = ({
@@ -13,6 +15,7 @@ const ReachargeComponents = ({
   firstHeading,
   secondHeading,
   ThirdHeading,
+  href,
 }: Props) => {
   return (
     <main className=" cursor-pointer rounded-md  px-6 py-3 pr-[40px] hover:bg-black/5">
@@ -23,9 +26,11 @@ const ReachargeComponents = ({
           <h3>{secondHeading}</h3>
           <section className="flex ">
             <h3>{ThirdHeading}</h3>
-            <button>
-              <IoIosArrowForward />
-            </button>
+            <Link href={href}>
+              <button>
+                <IoIosArrowForward />
+              </button>
+            </Link>
           </section>
         </div>
       </div>
