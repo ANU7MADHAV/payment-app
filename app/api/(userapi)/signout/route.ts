@@ -2,9 +2,7 @@ import { getUser } from "@/utilities/getUser";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: NextRequest) => {
-  cookies().delete("token");
-
+export async function GET(req: NextRequest) {
   const user = getUser(req);
   if (!user) {
     console.log("No user");
@@ -28,9 +26,10 @@ export const GET = async (req: NextRequest) => {
       status: 400,
     });
   }
+  cookies().delete("token");
 
   return NextResponse.json({
     message: "Cookies deleted succesfully",
     status: 200,
   });
-};
+}
