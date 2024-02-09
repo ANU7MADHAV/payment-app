@@ -47,7 +47,7 @@ const RechargeSection = () => {
             firstHeading="Book"
             secondHeading="Gas"
             ThirdHeading="Cylinder"
-            href="/book-recharge"
+            href="/pay-gas"
           />
         </div>
         <div>

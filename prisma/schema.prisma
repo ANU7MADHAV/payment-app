@@ -29,3 +29,33 @@ model Mobile {
   operator String @unique
   balance  Int
 }
+
+model Electricity {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  board   String @unique
+  balance Int
+}
+
+model Dth {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  dth     String @unique
+  balance Int
+}
+
+model Gas {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  provider String @unique
+  balance  Int
+}
+
+model Broadband {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  broadband String @unique
+  balance   Int
+}
+
+model Education {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  institute String @unique
+  balance   Int
+}
