@@ -4,7 +4,7 @@ import prisma from "@/utilities/db";
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
-  const { to, amount } = body;
+  const { to, amount, pin } = body;
 
   console.log(to, amount);
 
@@ -43,6 +43,19 @@ export const POST = async (req: NextRequest) => {
   const toAccountBalance = Number(toAccount.balance);
   const toBalance = toAccountBalance + numberAmount;
 
+  const findPin = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      pin: true,
+    },
+  });
+
+  if (pin !== findPin?.pin) {
+    return NextResponse.json({ message: "Pin is not matching", status: 400 });
+  }
+
   const transfer = await prisma?.$transaction([
     prisma.account.update({
       where: {
@@ -65,32 +78,6 @@ export const POST = async (req: NextRequest) => {
   if (!transfer) {
     return NextResponse.json({ message: "Transfer is failed", status: 400 });
   }
-
-  // const fromTransfer = await prisma?.account.update({
-  //   where: {
-  //     userId: account.userId,
-  //   },
-  //   data: {
-  //     balance: fromBalance,
-  //   },
-  // });
-
-  // if (!fromTransfer) {
-  //   return NextResponse.json({ message: "From account transcation is failed" });
-  // }
-
-  // const toTransfer = await prisma?.account.update({
-  //   where: {
-  //     userId: toAccount.userId,
-  //   },
-  //   data: {
-  //     balance: toBalance,
-  //   },
-  // });
-
-  // if (!toTransfer) {
-  //   return NextResponse.json({ message: "Transcation is failed" });
-  // }
 
   return NextResponse.json({ message: "Transcation is updated Succesfully" });
 };

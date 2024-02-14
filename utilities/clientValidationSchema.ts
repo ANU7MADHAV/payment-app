@@ -19,3 +19,5 @@ export const signInValidation = z.object({
     .string()
     .min(6, { message: "Password must be atleast 6 characters" }),
 });
+
+export const pinValidation = z.string().min(4).max(4);

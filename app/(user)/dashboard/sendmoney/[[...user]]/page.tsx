@@ -1,27 +1,25 @@
 "use client";
 
+import { friendDataSate } from "@/atoms/friendDataAtom";
 import { AlertDialogDemo } from "@/components/Sendmoney/Alert";
+import FriendDetails from "@/components/Sendmoney/FriendDetails";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 
-type ToUser = {
-  message: string;
-  firstName: string;
-  username: string;
-};
 
 const SendMoney = () => {
   const searchParams = useSearchParams();
   const toAccount = searchParams.get("user");
-  const [toUser, setToUser] = useState<ToUser>();
+  const [friendData, setFriendData] = useRecoilState(friendDataSate);
   const [sendAmount, setSendAmount] = useState("");
 
   useEffect(() => {
     const getToUser = async () => {
       const res = await axios.post("/api/toUser", { id: toAccount });
       const data = await res.data;
-      setToUser(data);
+      setFriendData(data);
     };
     getToUser();
   }, []);
@@ -33,12 +31,7 @@ const SendMoney = () => {
         <div>
           <section>
             <div className="py-4">
-              <h1 className="text-xl font-bold">
-                {toUser
-                  ? toUser.firstName.toLocaleUpperCase()
-                  : "Friend's Name"}
-              </h1>
-              <p>{toUser ? toUser.username : "Friend's Username"}</p>
+              <FriendDetails />
             </div>
             <p>Amount (in Rs)</p>
           </section>
