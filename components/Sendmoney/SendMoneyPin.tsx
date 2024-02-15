@@ -12,15 +12,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { CiBank } from "react-icons/ci";
 import { useRecoilValue } from "recoil";
 import Pin from "../Pin";
-import axios from "axios";
-import error from "next/error";
-import { useState } from "react";
+import { Spinner } from "@chakra-ui/react";
 
 type Props = {
   sendAmount: string;
@@ -28,6 +27,7 @@ type Props = {
 };
 
 const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const pin = useRecoilValue(pinDataSate);
   const [alert, setAlert] = useState(false);
@@ -58,6 +58,7 @@ const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
                 if (sendAmount === "") {
                   return null;
                 }
+                setLoading(true);
                 try {
                   const res = await axios.post("/api/account/transfer", {
                     amount: sendAmount,
@@ -66,16 +67,25 @@ const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
                   });
                   const data = await res.data;
                   const { message, success } = data;
+                  setLoading(false);
                   if (success) {
                     console.log(success, message);
                     router.push("/dashboard/transaction");
                   }
                 } catch (error) {
                   console.log("Error while sending money:", error);
+                  setLoading(false);
                 }
               }}
             >
-              Send Money
+              Send Money{" "}
+              {loading ? (
+                <span>
+                  <Spinner />
+                </span>
+              ) : (
+                ""
+              )}
             </Button>
           </AlertDialogAction>
         </AlertDialogFooter>

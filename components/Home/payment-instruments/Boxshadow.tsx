@@ -4,24 +4,24 @@ import Image from "next/image";
 
 const Boxshadow = () => {
   return (
-    <main className="flex items-center justify-center">
-      <div className=" mx-[100px] mt-[100px] h-[500px] w-auto shadow-xl dark:shadow-blue-400 ">
-        <div className="flex h-full justify-between">
-          <div className="flex flex-col  pl-[60px] pt-[50px]">
-            <section className="flex items-center">
+    <main className="flex items-center justify-center px-4 py-3 text-center">
+      <div className="w-auto shadow-xl dark:shadow-blue-400 ">
+        <div className="flex h-full flex-col justify-between">
+          <div className="flex flex-col ">
+            <section className="flex items-center justify-center py-2 ">
               <Image src={instrumentIcon} alt="icon" width={100} />
-              <p className="px-2 text-large font-bold">
+              <p className="px-2  font-bold">
                 Paytm <br />
                 Wallet
               </p>
             </section>
-            <section className="pt-[100px]">
-              <h1 className="text-3xl font-bold">
+            <section className="items-center justify-center">
+              <h1 className="text-xl font-bold ">
                 The Fastest Way to <br /> Pay In-store & Online.
               </h1>
-              <h3 className="py-6 font-medium">
-                Load up your Paytm Wallet for free and make payments <br /> in a
-                jiffy at over 21 million stores, websites and apps.
+              <h3 className="py-6 font-medium md:text-sm">
+                Load up your Paytm Wallet for free and make payments in a jiffy
+                at over 21 million stores, <br /> websites and apps.
               </h3>
             </section>
           </div>

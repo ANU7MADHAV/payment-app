@@ -7,7 +7,7 @@ const BalanceShow = () => {
   const balance = useRecoilValue(balanceDataSate);
   return (
     <Alert className="flex h-screen items-center justify-center">
-      <div className=" flex flex-col space-y-8 rounded-md px-[100px] py-[50px] shadow-lg dark:shadow-blue-500">
+      <div className=" flex flex-col space-y-8 rounded-md px-8  py-6 shadow-lg dark:shadow-blue-500">
         <AlertTitle className="text-4xl font-bold">
           {balance ? "Your Balance" : "Balance is not found"}
         </AlertTitle>

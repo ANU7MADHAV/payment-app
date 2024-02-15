@@ -4,12 +4,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
+import { Spinner } from "@chakra-ui/react";
 
 type ValidationSchema = z.infer<typeof signInValidation>;
 
 const SignIn = () => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -19,13 +22,15 @@ const SignIn = () => {
     resolver: zodResolver(signInValidation),
   });
   const onSubmit: SubmitHandler<ValidationSchema> = (submitData) => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         const res = await axios.post("/api/signin", submitData);
-        const data = res.data;
         router.push("/");
+        setLoading(false);
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
     };
     fetchData();
@@ -58,11 +63,25 @@ const SignIn = () => {
               {errors.password?.message}
             </p>
           )}
-          <input type="submit" className="cursor-pointer pt-4 text-blue-500" />
-          <div className="flex space-x-2 py-3">
+
+          <button
+            type="submit"
+            className="cursor-pointer pt-4  text-lg font-bold text-blue-400"
+          >
+            Submit
+            {loading ? (
+              <span className="px-2">
+                <Spinner />
+              </span>
+            ) : (
+              ""
+            )}
+          </button>
+
+          <div className="flex space-x-2 py-3 text-sm">
             <p>Already have an account ?</p>
             <Link href="/signup">
-              <h3 className="border-b-2 border-blue-300">Sign up</h3>
+              <h3 className="border-b-2  border-blue-300">Sign up</h3>
             </Link>
           </div>
         </form>

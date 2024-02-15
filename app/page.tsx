@@ -8,18 +8,20 @@ import Instruments from "@/components/Home/payment-instruments/Instruments";
 
 const Home = () => {
   return (
-    <main>
-      <nav>
+    <main className="dark:bg-black dark:text-white">
+      <nav className="w-screen">
         <UserNavbar />
       </nav>
       <div>
-        <div className="mt-[50px] flex justify-between space-x-4 px-4 ">
-          <div className="space-y-4 px-4 text-left">
-            <Image src={paytm} alt="paytm" width={300} />
-            <h1 className="text-5xl font-bold">
-              India's Most-loved Payments App
-            </h1>
-            <p>
+        <div className="mt-[50px] flex flex-col justify-between space-x-4 px-4 ">
+          <div className=" space-y-4 px-4 text-left">
+            <section>
+              <Image src={paytm} alt="paytm" width={300} />
+              <h1 className="text-2xl font-bold ">
+                India's Most-loved Payments App
+              </h1>
+            </section>
+            <p className="py-5">
               Recharge & pay bills, book flights & movie tickets, open a savings
               account, invest in stocks & mutual funds, and do a lot more.
             </p>

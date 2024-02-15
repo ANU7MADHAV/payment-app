@@ -19,11 +19,13 @@ import { useRouter } from "next/navigation";
 import { CiBank } from "react-icons/ci";
 import { useRecoilState, useRecoilValue } from "recoil";
 import Pin from "../Pin";
+import { useState } from "react";
 
 const Balance = () => {
   const router = useRouter();
   const [balance, setBalance] = useRecoilState(balanceDataSate);
   const pin = useRecoilValue(pinDataSate);
+
 
   const handleClick = async () => {
     try {

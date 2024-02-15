@@ -4,22 +4,29 @@ import Link from "next/link";
 import { ThemeSwitcher } from "./DarkMode";
 import User from "./User";
 import { useRouter } from "next/navigation";
+import { SheetDemo } from "./Bar";
 
 const Navbar = () => {
   const router = useRouter();
   return (
-    <div className="flex items-center justify-between p-4 shadow-md dark:shadow-blue-400">
-      <div className="flex items-center justify-around space-x-14 px-4 ">
+    <div className="flex w-screen items-center justify-between p-4 shadow-md dark:shadow-blue-400">
+      <div className="flex w-screen items-center justify-around space-x-14 px-4 ">
         <Link href="/">
-          <h1 className="text-4xl font-bold text-blue-600">Payment App</h1>
+          <h1 className="text-lg font-bold text-blue-600">Payment App</h1>
         </Link>
         <Link href="/dashboard">
-          <h1 className="text-lg font-medium">Dashboard</h1>
+          <h1 className="hidden text-medium font-medium md:block">Dashboard</h1>
         </Link>
+        <div className="block dark:bg-black dark:text-white md:hidden">
+          <ThemeSwitcher />
+        </div>
       </div>
-      <div className="flex space-x-8 px-6">
+      <div className="block md:hidden">
+        <SheetDemo />
+      </div>
+      <div className="hidden md:block">
         <ThemeSwitcher />
-        <div>
+        <div className="hidden md:block">
           <User />
         </div>
         <div

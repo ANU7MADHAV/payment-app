@@ -11,10 +11,10 @@ const BookiSection = () => {
   return (
     <main className="bg-[#0f4a8a]">
       <div className="space-y-8 p-6">
-        <h1 className="pl-6 text-4xl font-bold text-white">
+        <h1 className="pl-6 text-center text-4xl font-bold text-white">
           Book & Buy on Paytm.
         </h1>
-        <section className="flex justify-around">
+        <section className="flex flex-col  items-center justify-center">
           <div>
             <Booking
               imageUrl={movieIcon}

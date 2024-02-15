@@ -10,10 +10,10 @@ import allpaymentIcon from "@/public/allpayment.png";
 const RechargeSection = () => {
   return (
     <main className="mt-[80px] space-y-5 bg-[#00baf2] p-6">
-      <h1 className="pl-6 text-4xl font-bold text-white">
+      <h1 className="pl-6 text-center text-4xl font-bold text-white">
         Recharge & Pay Bills on Paytm.
       </h1>
-      <section className="flex items-center justify-around space-x-4">
+      <section className="flex flex-col items-center justify-around space-x-4">
         <div>
           <ReachargeComponents
             imageUrl={mobilIcon}

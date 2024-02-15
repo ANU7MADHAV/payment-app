@@ -24,7 +24,7 @@ const SendMoney = () => {
   }, []);
 
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen items-center justify-center dark:bg-black dark:text-white">
       <div className="flex min-w-[300px] flex-col space-y-5 rounded-md p-6 shadow-lg dark:shadow-blue-500">
         <h1 className="text-center text-2xl font-bold">Send Money</h1>
         <div>
