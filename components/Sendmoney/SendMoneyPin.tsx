@@ -1,6 +1,5 @@
 "use client";
 
-import { balanceDataSate } from "@/atoms/balanceDataAtom";
 import { pinDataSate } from "@/atoms/pinDataAtom";
 import {
   AlertDialog,
@@ -12,44 +11,33 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { pinValidation } from "@/utilities/clientValidationSchema";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { CiBank } from "react-icons/ci";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import Pin from "../Pin";
+import axios from "axios";
+import error from "next/error";
+import { useState } from "react";
 
-const Balance = () => {
+type Props = {
+  sendAmount: string;
+  toAccount: string;
+};
+
+const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
   const router = useRouter();
-  const [balance, setBalance] = useRecoilState(balanceDataSate);
   const pin = useRecoilValue(pinDataSate);
-
-  const handleClick = async () => {
-    try {
-      const response = pinValidation.safeParse(pin);
-      if (!response.success) {
-        return null;
-      }
-      const res = await axios.post("/api/account/balance", { pin: pin });
-      const data = res.data;
-      const { balance, message } = data;
-      setBalance(balance);
-      if (balance) {
-        console.log("balance", balance);
-        router.push("/balance");
-      }
-    } catch (error) {
-      console.log("something wrong", error);
-    }
-  };
+  const [alert, setAlert] = useState(false);
 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="ghost" className="text-xl font-bold text-blue-500">
           <CiBank className="text-2xl font-extrabold" />
-          Check Balance
+          Send Money
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="flex flex-col justify-center space-x-4 dark:bg-white ">
@@ -63,7 +51,32 @@ const Balance = () => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogAction>
-            <Button onClick={handleClick}>Ok</Button>
+            <Button
+              className="bg-green-400 dark:bg-green-600"
+              variant="outline"
+              onClick={async () => {
+                if (sendAmount === "") {
+                  return null;
+                }
+                try {
+                  const res = await axios.post("/api/account/transfer", {
+                    amount: sendAmount,
+                    to: toAccount,
+                    pin: pin,
+                  });
+                  const data = await res.data;
+                  const { message, success } = data;
+                  if (success) {
+                    console.log(success, message);
+                    router.push("/dashboard/transaction");
+                  }
+                } catch (error) {
+                  console.log("Error while sending money:", error);
+                }
+              }}
+            >
+              Send Money
+            </Button>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -71,4 +84,4 @@ const Balance = () => {
   );
 };
 
-export default Balance;
+export default SendMoneyPin;

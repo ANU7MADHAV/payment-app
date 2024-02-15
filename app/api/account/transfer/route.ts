@@ -38,7 +38,10 @@ export const POST = async (req: NextRequest) => {
     },
   });
   if (!toAccount) {
-    return NextResponse.json({ message: "To account doesn't exist" });
+    return NextResponse.json({
+      message: "To account doesn't exist",
+      success: false,
+    });
   }
   const toAccountBalance = Number(toAccount.balance);
   const toBalance = toAccountBalance + numberAmount;
@@ -51,9 +54,17 @@ export const POST = async (req: NextRequest) => {
       pin: true,
     },
   });
+  const checkPin = findPin?.pin;
+  console.log("type of checkpin", checkPin, typeof checkPin);
+  const numPin = Number(pin);
+  console.log("type of numPin", numPin, typeof numPin);
 
-  if (pin !== findPin?.pin) {
-    return NextResponse.json({ message: "Pin is not matching", status: 400 });
+  if (numPin !== checkPin) {
+    return NextResponse.json({
+      message: "Pin is not matching",
+      status: 400,
+      success: false,
+    });
   }
 
   const transfer = await prisma?.$transaction([
@@ -76,8 +87,15 @@ export const POST = async (req: NextRequest) => {
   ]);
 
   if (!transfer) {
-    return NextResponse.json({ message: "Transfer is failed", status: 400 });
+    return NextResponse.json({
+      message: "Transfer is failed",
+      status: 400,
+      success: false,
+    });
   }
 
-  return NextResponse.json({ message: "Transcation is updated Succesfully" });
+  return NextResponse.json({
+    message: "Transcation is updated Succesfully",
+    success: true,
+  });
 };

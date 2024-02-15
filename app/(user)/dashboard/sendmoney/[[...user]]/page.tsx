@@ -1,13 +1,12 @@
 "use client";
 
 import { friendDataSate } from "@/atoms/friendDataAtom";
-import { AlertDialogDemo } from "@/components/Sendmoney/Alert";
+import SendMoneyPin from "@/components/Sendmoney/SendMoneyPin";
 import FriendDetails from "@/components/Sendmoney/FriendDetails";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-
 
 const SendMoney = () => {
   const searchParams = useSearchParams();
@@ -42,7 +41,7 @@ const SendMoney = () => {
                border border-lime-200 px-2 outline-lime-400"
               onChange={(e) => setSendAmount(e.target.value)}
             />
-            <AlertDialogDemo sendAmount={sendAmount} toAccount={toAccount!} />
+            <SendMoneyPin sendAmount={sendAmount} toAccount={toAccount!} />
           </form>
         </div>
       </div>
