@@ -14,7 +14,7 @@ const BookiSection = () => {
         <h1 className="pl-6 text-center text-4xl font-bold text-white">
           Book & Buy on Paytm.
         </h1>
-        <section className="flex flex-col  items-center justify-center">
+        <section className="flex flex-col items-center justify-center lg:flex-row">
           <div>
             <Booking
               imageUrl={movieIcon}

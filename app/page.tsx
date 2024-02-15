@@ -13,11 +13,11 @@ const Home = () => {
         <UserNavbar />
       </nav>
       <div>
-        <div className="mt-[50px] flex flex-col justify-between space-x-4 px-4 ">
+        <div className="mt-[50px] flex flex-col justify-between space-x-4 px-4 lg:flex-row ">
           <div className=" space-y-4 px-4 text-left">
-            <section>
+            <section className="flex items-center lg:flex-col">
               <Image src={paytm} alt="paytm" width={300} />
-              <h1 className="text-2xl font-bold ">
+              <h1 className="text-2xl font-bold md:text-3xl lg:text-4xl ">
                 India's Most-loved Payments App
               </h1>
             </section>

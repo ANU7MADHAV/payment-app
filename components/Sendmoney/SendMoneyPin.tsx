@@ -13,13 +13,13 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CiBank } from "react-icons/ci";
 import { useRecoilValue } from "recoil";
 import Pin from "../Pin";
-import { Spinner } from "@chakra-ui/react";
 
 type Props = {
   sendAmount: string;
@@ -31,6 +31,13 @@ const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
   const router = useRouter();
   const pin = useRecoilValue(pinDataSate);
   const [alert, setAlert] = useState(false);
+  if (loading) {
+    return (
+      <div className="items-center justify-center text-2xl">
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <AlertDialog>
@@ -70,7 +77,7 @@ const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
                   setLoading(false);
                   if (success) {
                     console.log(success, message);
-                    router.push("/dashboard/transaction");
+                    router.push("/dashboard/message");
                   }
                 } catch (error) {
                   console.log("Error while sending money:", error);
@@ -79,13 +86,13 @@ const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
               }}
             >
               Send Money{" "}
-              {loading ? (
+              {/* {loading ? (
                 <span>
                   <Spinner />
                 </span>
               ) : (
                 ""
-              )}
+              )} */}
             </Button>
           </AlertDialogAction>
         </AlertDialogFooter>

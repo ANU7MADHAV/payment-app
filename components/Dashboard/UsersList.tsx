@@ -13,7 +13,7 @@ const UsersList = () => {
       <ul>
         {users.map((user, index) => (
           <li key={user.id}>
-            <div className="my-4 flex flex-col justify-between space-y-3 border-b py-3">
+            <div className="my-4 flex flex-col justify-between space-y-3 border-b py-3 md:flex-row">
               <section className="flex items-center">
                 <AvatarIcon>{user ? user.firstName.charAt(0) : "U"}</AvatarIcon>
                 <span>{user.firstName}</span>

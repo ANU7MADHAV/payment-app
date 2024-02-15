@@ -5,7 +5,7 @@ import Image from "next/image";
 const Boxshadow = () => {
   return (
     <main className="flex items-center justify-center px-4 py-3 text-center">
-      <div className="w-auto shadow-xl dark:shadow-blue-400 ">
+      <div className="w-screen shadow-xl dark:shadow-blue-400 ">
         <div className="flex h-full flex-col justify-between">
           <div className="flex flex-col ">
             <section className="flex items-center justify-center py-2 ">
