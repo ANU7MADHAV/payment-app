@@ -10,7 +10,7 @@ import { SonnerDemo } from "./Signout";
 const Navbar = () => {
   const router = useRouter();
   return (
-    <div className="flex w-screen items-center justify-between p-4 shadow-md dark:shadow-blue-400">
+    <div className="flex w-screen items-center justify-between p-4 shadow-md dark:bg-gray-800 dark:shadow-blue-400">
       <div className="flex w-screen items-center justify-between space-x-14 px-4 ">
         <section className="flex items-center justify-around space-x-10">
           <Link href="/">
@@ -19,13 +19,13 @@ const Navbar = () => {
             </h1>
           </Link>
           <Link href="/dashboard">
-            <h1 className="hidden text-medium font-medium lg:block lg:text-xl ">
+            <h1 className="hidden text-medium font-medium dark:text-white lg:block lg:text-xl ">
               Dashboard
             </h1>
           </Link>
         </section>
 
-        <div className="block dark:bg-black dark:text-white lg:hidden">
+        <div className="block dark:bg-gray-800 dark:text-white lg:hidden">
           <ThemeSwitcher />
         </div>
       </div>
@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className="hidden lg:flex">
           <User />
         </div>
-        <div className="cursor-pointer  pt-1">
+        <div className="cursor-pointer pt-1  dark:text-white">
           <SonnerDemo />
         </div>
       </div>

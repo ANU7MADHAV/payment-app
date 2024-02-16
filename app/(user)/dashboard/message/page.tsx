@@ -2,7 +2,7 @@ import AlertSend from "@/components/Sendmoney/Alert";
 
 const page = () => {
   return (
-    <div>
+    <div className="dark:bg-gray-800">
       <AlertSend />
     </div>
   );

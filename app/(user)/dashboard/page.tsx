@@ -4,7 +4,7 @@ import UsersList from "@/components/Dashboard/UsersList";
 
 const dashboard = () => {
   return (
-    <div className="mt-5 flex w-screen flex-col space-y-4 p-4 dark:bg-black dark:text-white">
+    <div className="mt-5 flex w-screen flex-col space-y-4 p-4 dark:bg-gray-800 dark:text-white">
       <div className="flex justify-end pr-4">
         <Balance />
       </div>

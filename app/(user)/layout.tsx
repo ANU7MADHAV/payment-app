@@ -7,10 +7,10 @@ export default async function Layout({
 }) {
   return (
     <>
-      <nav>
+      <nav className="dark:bg-gray-800">
         <UserNavbar />
       </nav>
-      <main>{children}</main>
+      <main className="dark:bg-gray-800 dark:text-white">{children}</main>
     </>
   );
 }

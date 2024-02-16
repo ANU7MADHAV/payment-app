@@ -16,11 +16,11 @@ const Boxshadow = () => {
               </p>
             </section>
             <section className="items-center justify-center">
-              <h1 className="text-xl font-bold ">
+              <h1 className="text-xl font-bold lg:text-3xl ">
                 The Fastest Way to <br className="lg:hidden" /> Pay In-store &
                 Online.
               </h1>
-              <h3 className="py-6 font-medium md:text-sm">
+              <h3 className="py-6 font-medium md:text-sm lg:text-lg">
                 Load up your Paytm Wallet for free and make payments in a jiffy
                 at over 21 million stores, <br className="lg:hidden" /> websites
                 and apps.

@@ -8,7 +8,7 @@ import Instruments from "@/components/Home/payment-instruments/Instruments";
 
 const Home = () => {
   return (
-    <main className="dark:bg-black dark:text-white">
+    <main className="dark:bg-gray-800 dark:text-white">
       <nav className="w-screen">
         <UserNavbar />
       </nav>

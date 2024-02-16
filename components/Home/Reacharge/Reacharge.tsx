@@ -20,7 +20,7 @@ const ReachargeComponents = ({
   return (
     <main className=" mx-3 cursor-pointer rounded-md  px-4 py-3 pr-[30px] hover:bg-black/5">
       <Link href={href}>
-        <div className=" max-w-[80px] text-left  xl:min-w-[110px]">
+        <div className="w-[100px] text-left  xl:min-w-[110px]">
           <Image src={imageUrl} alt="mobileIcon" />
           <div className="flex flex-col justify-start py-2 pl-2 text-left font-bold text-white/90">
             <h3 className="py-1 text-sm font-medium xl:text-lg">

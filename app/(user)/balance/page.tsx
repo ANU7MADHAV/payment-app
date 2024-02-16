@@ -3,7 +3,7 @@ import React from "react";
 
 const BalancePage = () => {
   return (
-    <div>
+    <div className="dark:bg-gray-800">
       <BalanceShow />
     </div>
   );

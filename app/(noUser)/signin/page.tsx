@@ -37,7 +37,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center ">
+    <div className="flex h-screen flex-col items-center justify-center dark:bg-gray-800 ">
       <div className="flex flex-col rounded-md px-8 py-6 shadow-lg dark:shadow-blue-400">
         <h1 className="text-center text-2xl font-medium">Sign In</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">

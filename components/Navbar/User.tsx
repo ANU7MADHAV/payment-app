@@ -28,9 +28,11 @@ const User = () => {
   }, []);
   const nameFirstLetter = user ? user.firstName.charAt(0) : "U";
   return (
-    <div className="flex items-center justify-around">
+    <div className="flex items-center justify-around dark:to-blue-400">
       <AvatarIcon>{nameFirstLetter}</AvatarIcon>
-      <h1 className="font-medium">{user ? user.firstName : "user"}</h1>
+      <h1 className="font-medium dark:text-white">
+        {user ? user.firstName : "user"}
+      </h1>
     </div>
   );
 };

@@ -1,11 +1,11 @@
-import Booking from "./Booking";
-import movieIcon from "@/public/movie.png";
-import flightIcon from "@/public/flight.png";
 import busIcon from "@/public/busIcon.png";
-import trainIcon from "@/public/trainIcon.png";
+import flightIcon from "@/public/flight.png";
 import insuranceIcon from "@/public/insurance.png";
-import tourIcon from "@/public/tour.png";
 import investIcon from "@/public/invest.webp";
+import movieIcon from "@/public/movie.png";
+import tourIcon from "@/public/tour.png";
+import trainIcon from "@/public/trainIcon.png";
+import Booking from "./Booking";
 
 const BookiSection = () => {
   return (
@@ -14,7 +14,8 @@ const BookiSection = () => {
         <h1 className="pl-6 text-center text-4xl font-bold text-white">
           Book & Buy on Paytm.
         </h1>
-        <section className="flex flex-col items-center justify-center lg:flex-row">
+
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
           <div>
             <Booking
               imageUrl={movieIcon}
@@ -64,7 +65,7 @@ const BookiSection = () => {
               secondHeading="in Stocks"
             />
           </div>
-        </section>
+        </div>
       </div>
     </main>
   );

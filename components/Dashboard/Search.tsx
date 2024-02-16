@@ -27,7 +27,7 @@ const Search = () => {
         <input
           type="text"
           placeholder="search users"
-          className="w-full rounded-md border border-blue-400 px-4"
+          className="w-full rounded-md border border-blue-400 px-4 py-2"
           onChange={(e) => setSeachQuery(e.target.value)}
         />
       </div>
