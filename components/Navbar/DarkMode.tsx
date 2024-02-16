@@ -1,13 +1,12 @@
 "use client";
 
+import {
+  SwitchProps,
+  VisuallyHidden,
+  useSwitch
+} from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import {
-  Switch,
-  useSwitch,
-  VisuallyHidden,
-  SwitchProps,
-} from "@nextui-org/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 export function ThemeSwitcher(props: SwitchProps) {
