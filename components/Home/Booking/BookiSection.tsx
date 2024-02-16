@@ -15,7 +15,7 @@ const BookiSection = () => {
           Book & Buy on Paytm.
         </h1>
 
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7">
           <div>
             <Booking
               imageUrl={movieIcon}

@@ -14,13 +14,14 @@ const Search = () => {
         const res = await axios.post("/api/users", { data: searchQuery });
         const data = await res.data;
         setUsers(res.data.users);
+        console.log(data);
       } catch (error) {
         console.log("something wrong", error);
       }
     };
     fetchUsers();
   }, [searchQuery]);
-  console.log(searchQuery);
+
   return (
     <>
       <div className="mx-5">

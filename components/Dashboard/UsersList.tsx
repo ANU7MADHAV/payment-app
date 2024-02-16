@@ -1,17 +1,23 @@
 "use client";
 
+import { currentUserDataSate } from "@/atoms/currentUserData";
 import { usersListAtoms } from "@/src/atoms/userListAtom";
 import Link from "next/link";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import AvatarIcon from "../Avatar";
 
 const UsersList = () => {
   const [users, setUsers] = useRecoilState(usersListAtoms);
+  const currentUser = useRecoilValue(currentUserDataSate);
+
+  const actualUsers = users.filter(
+    (user) => user.username !== currentUser.userName,
+  );
 
   return (
     <div className="px-6 text-lg font-medium">
       <ul>
-        {users.map((user, index) => (
+        {actualUsers.map((user, index) => (
           <li key={user.id}>
             <div className="my-4 flex flex-col justify-between space-y-3 border-b py-3 md:flex-row">
               <section className="flex items-center">

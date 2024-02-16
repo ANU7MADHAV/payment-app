@@ -1,11 +1,10 @@
 "use client";
-import axios from "axios";
 import Link from "next/link";
-import { ThemeSwitcher } from "./DarkMode";
-import User from "./User";
 import { useRouter } from "next/navigation";
 import { SheetDemo } from "./Bar";
+import { ThemeSwitcher } from "./DarkMode";
 import { SonnerDemo } from "./Signout";
+import User from "./User";
 
 const Navbar = () => {
   const router = useRouter();

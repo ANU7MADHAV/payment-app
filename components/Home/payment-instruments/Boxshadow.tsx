@@ -6,7 +6,7 @@ const Boxshadow = () => {
   return (
     <main className="flex items-center justify-center px-4 py-3 text-center">
       <div className="w-screen shadow-xl dark:shadow-blue-400 ">
-        <div className="lg: flex h-full flex-col justify-between px-8 lg:flex-row lg:text-left">
+        <div className=" flex h-full flex-col justify-between px-8 lg:flex-row lg:text-left">
           <div className="flex flex-col ">
             <section className="flex items-center justify-center py-2 ">
               <Image src={instrumentIcon} alt="icon" width={100} />

@@ -1,4 +1,5 @@
 import prisma from "@/utilities/db";
+import { request } from "express";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -6,10 +7,14 @@ export const POST = async (req: NextRequest) => {
   const body = (await req.json()) || "";
 
   const { data } = body;
+
+  if (body === "") {
+    const users = await prisma.user.findMany({});
+    return NextResponse.json({ message: "users data", users });
+  }
   try {
     const users = await prisma.user.findMany({
       where: {
-        online: false,
         OR: [
           { firstName: { startsWith: data, mode: "insensitive" } },
           { lastName: { contains: data, mode: "insensitive" } },

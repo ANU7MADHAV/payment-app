@@ -1,8 +1,9 @@
 "use client";
 
-import { user } from "@nextui-org/react";
+import { currentUserDataSate } from "@/atoms/currentUserData";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import AvatarIcon from "../Avatar";
 
 type CurrenUser = {
@@ -12,7 +13,7 @@ type CurrenUser = {
 };
 
 const User = () => {
-  const [user, setUser] = useState<CurrenUser>();
+  const [user, setUser] = useRecoilState<CurrenUser>(currentUserDataSate);
   useEffect(() => {
     const getUser = async () => {
       try {

@@ -13,7 +13,7 @@ const RechargeSection = () => {
       <h1 className="pl-6 text-center text-2xl font-bold text-white md:text-4xl">
         Recharge & Pay Bills on Paytm.
       </h1>
-      <div className="grid h-full grid-cols-2 justify-center md:grid-cols-4 lg:grid-cols-6 ">
+      <div className="xl:grid-col grid h-full grid-cols-2 justify-center md:grid-cols-4 lg:grid-cols-7 ">
         <div>
           <ReachargeComponents
             imageUrl={mobilIcon}

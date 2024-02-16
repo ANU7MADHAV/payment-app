@@ -53,6 +53,7 @@ export const POST = async (req: NextRequest) => {
         status: 400,
       });
     }
+    
     const numAmount = Number(amount);
     const currentUserBalance = currentUserAccount.balance - numAmount;
     const currenDthBalance = createDth.balance + numAmount;
