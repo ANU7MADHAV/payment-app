@@ -7,6 +7,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import ExitButton from "@/components/ExitButton";
 
 const SendMoney = () => {
   const searchParams = useSearchParams();
@@ -24,28 +25,33 @@ const SendMoney = () => {
   }, []);
 
   return (
-    <div className="flex h-screen items-center justify-center dark:bg-gray-800 dark:text-white">
-      <div className="flex min-w-[300px] flex-col space-y-5 rounded-md p-6 shadow-lg dark:shadow-blue-500">
-        <h1 className="text-center text-2xl font-bold">Send Money</h1>
-        <div>
-          <section>
-            <div className="py-4">
-              <FriendDetails />
-            </div>
-            <p>Amount (in Rs)</p>
-          </section>
-          <form className="flex flex-col">
-            <input
-              type="text"
-              className="my-4 rounded-sm
+    <main>
+      <section className="flex justify-end px-4 ">
+        <ExitButton />
+      </section>
+      <div className="flex h-screen items-center justify-center dark:bg-gray-800 dark:text-white">
+        <div className="flex min-w-[300px] flex-col space-y-5 rounded-md p-6 shadow-lg dark:shadow-blue-500">
+          <h1 className="text-center text-2xl font-bold">Send Money</h1>
+          <div>
+            <section>
+              <div className="py-4">
+                <FriendDetails />
+              </div>
+              <p>Amount (in Rs)</p>
+            </section>
+            <form className="flex flex-col">
+              <input
+                type="text"
+                className="my-4 rounded-sm
                border border-lime-200 px-2 outline-lime-400"
-              onChange={(e) => setSendAmount(e.target.value)}
-            />
-            <SendMoneyPin sendAmount={sendAmount} toAccount={toAccount!} />
-          </form>
+                onChange={(e) => setSendAmount(e.target.value)}
+              />
+              <SendMoneyPin sendAmount={sendAmount} toAccount={toAccount!} />
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

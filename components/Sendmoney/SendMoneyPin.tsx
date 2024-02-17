@@ -42,7 +42,10 @@ const SendMoneyPin = ({ sendAmount, toAccount }: Props) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="ghost" className="text-xl font-bold text-blue-500">
+        <Button
+          variant="ghost"
+          className="bg-blue-400 text-xl font-bold text-white"
+        >
           <CiBank className="text-2xl font-extrabold" />
           Send Money
         </Button>
